@@ -19,7 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "Juros_SimplesServlet", urlPatterns = {"/juros-simples"})
 public class Juros_SimplesServlet extends HttpServlet {
-
+    double valorIni,valorIni2,percent,percent2,numDia,numMes,
+            valorTotal1,valorJuros1,valorTotal2,valorJuros2;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -40,7 +41,43 @@ public class Juros_SimplesServlet extends HttpServlet {
             out.println("<title>Servlet Juros_SimplesServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Juros_SimplesServlet at " + request.getContextPath() + "</h1>");
+            //Cálculo do Juros ao Mês
+            out.println("<h1>Cálculo de Juros Simples ao Mês</h1>");
+            out.println("<form>");
+            out.println("Valor Inicial: <input type='text'name='valorIni'/>");
+            out.println("Juros ao Mês: <input type='text' name='percent'/>");
+            out.println("Quantidade de Meses: <input type='text' name='numMes'/>");
+            out.println("<input type='submit' value='Calcular'/>");
+            out.println("</form>");
+            try{
+                valorIni = Double.parseDouble(request.getParameter("valorIni"));
+                percent = Double.parseDouble(request.getParameter("percent"));
+                numMes = Double.parseDouble(request.getParameter("numMes"));
+            }catch(Exception e){}
+            valorTotal1 = valorIni+(valorIni*(percent/100)*numMes);
+            valorJuros1 = valorIni*(percent/100)*numMes;
+            out.println("<h2>Valor total do Montante: "+valorTotal1+"<h2>");
+            out.println("<h2>Valor do Juros ao Mês: "+valorJuros1+"<h2>");
+            //Calculo do Juros ao Ano
+            out.println("<h1>Cálculo de Juros ao Ano</h1>");
+            out.println("<form>");
+            out.println("Valor Inicial: <input type='text'name='valorIni2'/>");
+            out.println("Juros ao Ano: <input type='text' name='percent2'/>");
+            out.println("Quantidade de Dias: <input type='text' name='numDia'/>");
+            out.println("<input type='submit' value='Calcular'/>");
+            out.println("</form>");
+            try{
+                valorIni2 = Double.parseDouble(request.getParameter("percent2"));
+                percent2 = Double.parseDouble(request.getParameter("percent2"));
+                numDia = Double.parseDouble(request.getParameter("numDia"));
+            }catch(Exception e){}
+            valorTotal2 = valorIni2+(valorIni2*((percent2/100)*(numDia/365)));
+            valorJuros2 = valorIni2*((percent2/100)*(numDia/365));
+            out.println("<h2>Valor total do Montante: "+valorTotal2+"<h2>");
+            out.println("<h2>Valor do Juros ao Ano: "+valorJuros2+"<h2>");
+            
+            out.println("");
+            
             out.println("</body>");
             out.println("</html>");
         }
