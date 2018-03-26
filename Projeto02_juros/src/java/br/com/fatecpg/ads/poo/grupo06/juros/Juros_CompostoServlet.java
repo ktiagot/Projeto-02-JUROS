@@ -157,15 +157,7 @@ out.println("<!DOCTYPE html>"
   +"</body>"
 +"</html>");
                                                                             }
-=======
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Calcular Juros Compostos</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("</body>");
-            out.println("</html>");
+
         }
 
     }
