@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author mitsu
+ * @author Tiago
  */
 @WebServlet(name = "Juros_CompostoServlet", urlPatterns = {"/juros-composto"})
 public class Juros_CompostoServlet extends HttpServlet {
@@ -37,10 +37,9 @@ public class Juros_CompostoServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Juros_CompostoServlet</title>");            
+            out.println("<title>Calcular Juros Compostos</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Juros_CompostoServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
