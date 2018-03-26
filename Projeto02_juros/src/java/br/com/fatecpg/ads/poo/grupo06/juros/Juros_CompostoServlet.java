@@ -35,6 +35,7 @@ public class Juros_CompostoServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+
 out.println("<!DOCTYPE html>"
 +"<html lang='en'>"
   +"<head>"
@@ -156,6 +157,17 @@ out.println("<!DOCTYPE html>"
   +"</body>"
 +"</html>");
                                                                             }
+=======
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Calcular Juros Compostos</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
