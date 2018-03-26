@@ -61,13 +61,13 @@ out.println("<!DOCTYPE html>"
                         +"<span class='icon-bar'></span>"
                         +"<span class='icon-bar'></span>"
                     +"</button>"
-                    +"<a class='navbar-brand' href='index.html'>Calcular Juros</a>"
+                    +"<a class='navbar-brand' href='home'>Calcular Juros</a>"
                 +"</div>				"
                 +"<div class='collapse navbar-collapse navbar-right'>"
                     +"<ul class='nav navbar-nav'>"
-                        +"<li class='active'><a href='index.html'>Home</a></li>"
-                        +"<li><a href='juros-simples'>Juros Simples</a></li>"
-                        +"<li><a href='juros-composto'>Juros Compostos</a></li>"
+                        +"<li class='active'><a href='/home'>Home</a></li>"
+                        +"<li><a href='/juros-simples'>Juros Simples</a></li>"
+                        +"<li><a href='/juros-composto'>Juros Compostos</a></li>"
                     +"</ul>"
                 +"</div>"
             +"</div><!--/.container-->"
@@ -86,47 +86,8 @@ out.println("<!DOCTYPE html>"
 						+"<img src='img/1.jpg' class='img-responsive' alt=''> "
 						+"<div class='carousel-caption'>"
 							+"<div class='wow fadeInUp' data-wow-offset='0' data-wow-delay='0.5s'>"								
-								+"<h2>Calcule Juros Simples</h2>"
+								+"<h2>Calcule Juros Compostos</h2>"
 							+"</div>"
-							+"<div class='wow fadeInUp' data-wow-offset='0' data-wow-delay='0.6s'>"														
-							+"</div>"
-							+"<div class='wow fadeInUp' data-wow-offset='0' data-wow-delay='0.9s'>"
-							+"</div>"
-                                                    +"<center><form><table style='text-align:right; font-size:20px'>"
-                                                                            +"<td><br></td>"
-                                                                            +"<tr><td>Taxa de Juros: </td><td> <input type='text' name='juros'/></td></tr>"
-                                                                            +"<td><br></td>"
-                                                                            +"<tr><td>Valor: </td><td> <input type='text' name='val'/></td></tr>"
-                                                                            +"<td><br></td>"
-                                                                            +"<tr><td>Período em meses: </td><td> <input type='text' name='tempo'/></td></tr>"
-                                                                            +"<td><br></td>"
-                                                                            +"<tr><td colspan='2'><center><input type='submit' value='Calcular'/><center></td></tr>"
-                                                                            +"<td><br></td>");
-                                                                            DecimalFormat aj = new DecimalFormat("###,##0.00");
-                                                                            double juros = 100, calcj = 0, val = 0;
-                                                                            int tempo = 0;
-                                                                            try
-                                                                            {
-                                                                                juros = Double.parseDouble(request.getParameter("juros"));
-                                                                                val = Double.parseDouble(request.getParameter("val"));
-                                                                                tempo = Integer.parseInt(request.getParameter("tempo"));
-                                                                            }
-                                                                            catch(Exception ex)
-                                                                            {
-                                                                            }
-                                                                            calcj = val;
-                                                                            juros = juros/100;
-                                                                            for(int i = 0; i < tempo; i++)
-                                                                            {
-                                                                                calcj = (juros * calcj) + calcj;
-                                                                                out.println("<tr>"
-                                                                                +"<td>Valor: R$"+ aj.format(val) +"</td>"
-                                                                                +"<td>Com Juros: R$" + aj.format(calcj) + "</td>"
-                                                                                +"<td> Tempo: " + (i+1) + "</td>"
-                                                                                +"</tr>");
-                                                                            }
-                                                                            
-                                                                            out.println("</form></table>"
 						+"</div>"
 				    +"</div>"
 				+"</div>"
@@ -137,8 +98,42 @@ out.println("<!DOCTYPE html>"
 					+"<i class='fa fa-angle-right'></i> "
 				+"</a>"
 			+"</div> <!--/#carousel-slider-->"
-		+"</div><!--/#about-slider-->"
-    +"<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->"
+                     +"<center><form><table style='text-align:right; font-size:20px'>"
+                        +"<td><br></td>"
+                        +"<tr><td>Taxa de Juros (%): </td><td> <input type='text' name='juros'/></td></tr>"
+                        +"<td><br></td>"
+                        +"<tr><td>Valor: </td><td> <input type='text' name='val'/></td></tr>"
+                        +"<td><br></td>"
+                        +"<tr><td>Período em meses: </td><td> <input type='text' name='tempo'/></td></tr>"
+                        +"<td><br></td>"
+                        +"<tr><td colspan='2'><center><input type='submit' value='Calcular'/><center></td></tr>"
+                        +"<td><br></td>");
+                        DecimalFormat aj = new DecimalFormat("###,##0.00");
+                        double juros = 100, calcj = 0, val = 0;
+                        int tempo = 0;
+                        try
+                        {
+                            juros = Double.parseDouble(request.getParameter("juros"));
+                            val = Double.parseDouble(request.getParameter("val"));
+                            tempo = Integer.parseInt(request.getParameter("tempo"));
+                        }
+                        catch(Exception ex)
+                        {
+                        }
+                        calcj = val;
+                        juros = juros/100;
+                        for(int i = 0; i < tempo; i++)
+                        {
+                            calcj = (juros * calcj) + calcj;
+                            out.println("<tr>"
+                            +"<td>Valor: R$"+ aj.format(val) 
+                            +"</td><td>Com Juros: R$" + aj.format(calcj) 
+                            +"</td><td>Tempo: " + (i+1) 
+                            +"</td></tr>");
+                        }
+                        out.println("</form></table>"
+            +"</div><div></div><!--/#about-slider-->"
+        +"<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->"
     +"<script src='js/jquery-2.1.1.min.js'></script>"
     +"<!-- Include all compiled plugins (below), or include individual files as needed -->"
     +"<script src='js/bootstrap.min.js'></script>"
@@ -154,6 +149,7 @@ out.println("<!DOCTYPE html>"
                 +")" 
 		+".init();"
 	+"</script>"
+      
   +"</body>"
 +"</html>");
                                                                             
